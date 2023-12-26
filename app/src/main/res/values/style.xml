@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="calc_Button" >
+        <item name="android:textColor">@color/accent</item>
+        <item name="android:background">@color/orange</item>
+        <item name="android:textSize">25sp</item>
+        <item name="colorPrimary">@color/red</item>
+
+
+        <!-- Add other custom attributes here -->
+    </style>
+</resources>

@@ -1,0 +1,32 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.HueCalculator"
+        parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your dark theme here. -->
+        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+
+
+    </style>
+
+    <style name="Theme.HueCalculator"
+        parent="Base.Theme.HueCalculator">
+        <item name="android:colorBackground">@color/primaryNight</item>
+        <item name="colorPrimaryDark">@color/secondaryNight</item>
+        <item name="android:statusBarColor">@color/primaryNight</item>
+
+    </style>
+    <style name="Calc.Button"
+        parent="Theme.HueCalculator">
+        <item name="colorPrimary">@color/secondaryNight</item>
+        <item name="colorOnPrimary">@color/textNight</item>
+        <item name="android:textSize">25sp</item>
+        <item name="android:statusBarColor">@color/primaryNight</item>
+    </style>
+
+    <style name="Calc.Operator.Button"
+        parent="Theme.HueCalculator">
+        <item name="colorOnPrimary">@color/orangeNight</item>
+        <item name="android:textSize">25sp</item>
+        <item name="colorPrimary">@color/secondaryNight</item>
+    </style>
+</resources>

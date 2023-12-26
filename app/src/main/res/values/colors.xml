@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#cccccc</color>
+
+    <color name="primaryNight">#0A1318</color>
+    <color name="secondaryNight">#050812</color>
+    <color name="textNight">#BCBCBC</color>
+    <color name="orangeNight">#B85F00</color>
+
+    <color name="primaryDay">#E7E1DA</color>
+    <color name="secondaryDay">#212121</color>
+    <color name="textDay">#BCBCBC</color>
+    <color name="red">#AF0000</color>
+    <color name="orange">#FF8400</color>
+
+    <color name="transparent">#000B161B</color>
+    <color name="accent">#00ff00</color>
+
+</resources>
