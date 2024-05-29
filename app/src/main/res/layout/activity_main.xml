@@ -172,7 +172,7 @@
                 android:theme="@style/Calc.Operator.Button" />
 
             <Button
-                android:id="@+id/powersBtn"
+                android:id="@+id/powerBtn"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_margin="@dimen/button_margin"
