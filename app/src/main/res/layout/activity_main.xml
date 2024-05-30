@@ -8,25 +8,24 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:theme="@style/Theme.HueCalculator"
-    tools:context=".MainActivity"
-    >
+    tools:context=".MainActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
-        android:orientation="vertical"
         android:clipChildren="false"
         android:clipToPadding="false"
-        >
+        android:orientation="vertical">
+
         <ImageButton
             android:id="@+id/themeToggle"
             android:layout_width="wrap_content"
-            android:layout_gravity="right"
             android:layout_height="0dp"
+            android:layout_gravity="right"
             android:layout_weight="1"
             android:backgroundTint="@color/transparent"
-            android:onClick="toggleTheme"/>
+            android:onClick="toggleTheme" />
 
         <TextView
             android:id="@+id/workingTV"
@@ -44,10 +43,9 @@
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="4"
-            android:paddingRight="30sp"
             android:clipChildren="false"
             android:clipToPadding="false"
-            >
+            android:paddingRight="30sp">
 
             <TextView
                 android:id="@+id/resultTV"
@@ -76,56 +74,6 @@
 
 
     </LinearLayout>
-
-    <!-- use this if framelayout fails
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="6"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/workingTV"
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_gravity="end"
-            android:layout_weight="1"
-            android:gravity="center_vertical"
-            android:paddingRight="30sp"
-            android:text=""
-
-            android:textSize="30sp" />
-
-        <RelativeLayout
-            android:layout_width="wrap_content"
-            android:layout_height="0dp"
-            android:layout_weight="1"
-            android:layout_gravity="bottom|end">
-
-        <TextView
-            android:id="@+id/resultTV"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_gravity="bottom|end"
-            android:gravity="center_vertical"
-            android:text="0"
-            android:textSize="45sp"
-            />
-            <TextView
-                android:id="@+id/resultTVtemp"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="bottom|end"
-                android:gravity="center_vertical"
-                android:paddingRight="30sp"
-                android:textSize="45sp"
-                android:visibility="invisible"
-
-                />
-        </RelativeLayout>
-
-
-    </LinearLayout> -->
 
 
     <LinearLayout

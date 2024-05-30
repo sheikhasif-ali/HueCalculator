@@ -5,13 +5,12 @@ import android.animation.AnimatorListenerAdapter
 import android.animation.AnimatorSet
 import android.animation.ArgbEvaluator
 import android.animation.ObjectAnimator
+import android.content.res.Configuration
 import android.graphics.Color
 import android.os.Bundle
 import android.view.HapticFeedbackConstants
 import android.view.View
 import android.widget.Button
-import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
@@ -19,35 +18,9 @@ import com.huecalculator.databinding.ActivityMainBinding
 import javax.script.ScriptEngineManager
 import javax.script.ScriptException
 
+
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
-//    var workingTV: TextView? = null
-//    var resultTV: TextView? = null
-//    var resultTVtemp: TextView? = null
-//
-//    var zeroBtn: Button? = null
-//    var oneBtn: Button? = null
-//    var twoBtn: Button? = null
-//    var threeBtn: Button? = null
-//    var fourBtn: Button? = null
-//    var fiveBtn: Button? = null
-//    var sixBtn: Button? = null
-//    var sevenBtn: Button? = null
-//    var eightBtn: Button? = null
-//    var nineBtn: Button? = null
-//    var addBtn: Button? = null
-//    var subtractBtn: Button? = null
-//    var multiplyBtn: Button? = null
-//    var divideBtn: Button? = null
-//    var powerBtn: Button? = null
-//    var equalBtn: Button? = null
-//    var clearBtn: Button? = null
-//    var parenthesesBtn: Button? = null
-//    var decimalBtn: Button? = null
-//    var backBtn: Button? = null
-//    var themeToggle: ImageButton? = null
-
-
     private var workings: String = ""
     private var formula: String = ""
     private var tempFormula: String = ""
@@ -60,7 +33,25 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         initTextViews()
-        setThemeIcon()
+        setThemeIcon(savedInstanceState)
+        if (savedInstanceState != null) {
+            workings = savedInstanceState.getString("workings")!!
+            binding.workingTV.text = workings
+            formula = savedInstanceState.getString("formula")!!
+            tempFormula = savedInstanceState.getString("tempFormula")!!
+            equate(true)
+        }
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+        outState.putInt(
+            "darkMode",
+            this.getResources().configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        )
+        outState.putString("workings", workings)
+        outState.putString("formula", formula)
+        outState.putString("tempFormula", tempFormula)
     }
 
     private fun initTextViews() {
@@ -383,22 +374,36 @@ class MainActivity : AppCompatActivity() {
     fun toggleTheme(view: View?) {
         //Set the theme mode for the restarted activity.
 
-        val darkMode = AppCompatDelegate.getDefaultNightMode()
-        if (darkMode == AppCompatDelegate.MODE_NIGHT_YES) {
+        val darkMode = this.getResources().configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+        if (darkMode ==  Configuration.UI_MODE_NIGHT_YES) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-        } else {
+        } else if(darkMode ==  Configuration.UI_MODE_NIGHT_NO) {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
         }
         // Recreate the activity for the theme change to take effect.
         recreate()
     }
 
-    private fun setThemeIcon() {
-        val darkMode = AppCompatDelegate.getDefaultNightMode()
-        if (darkMode == AppCompatDelegate.MODE_NIGHT_YES) {
-            binding.themeToggle.setImageResource(R.drawable.lighttoggle)
+    private fun setThemeIcon(darkMode: Bundle?) {
+        if (darkMode == null) {
+            val nightModeFlags: Int =
+                this.getResources().configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK
+
+            when (nightModeFlags) {
+                Configuration.UI_MODE_NIGHT_YES -> {
+                    binding.themeToggle.setImageResource(R.drawable.lighttoggle)
+                }
+
+                Configuration.UI_MODE_NIGHT_NO -> {
+                    binding.themeToggle.setImageResource(R.drawable.darktoggle)
+                }
+            }
         } else {
-            binding.themeToggle.setImageResource(R.drawable.darktoggle)
+            if (darkMode.getInt("darkMode") == Configuration.UI_MODE_NIGHT_NO) {
+                binding.themeToggle.setImageResource(R.drawable.lighttoggle)
+            } else if (darkMode.getInt("darkMode") == Configuration.UI_MODE_NIGHT_YES) {
+                binding.themeToggle.setImageResource(R.drawable.darktoggle)
+            }
         }
     }
 }
